@@ -1,5 +1,5 @@
 import React from "react";
-import If from "./Reusable/If/If.jsx";
+import If from "../Reusable/If/If.jsx";
 import TextField from "./TextField.jsx";
 import Paragraph from "./Paragraph.jsx";
 import Numeric from "./Numeric.jsx";
@@ -13,6 +13,7 @@ export default class NewField extends React.Component {
     this.onTypeChange = this.onTypeChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   onTypeChange(e) {
@@ -24,7 +25,10 @@ export default class NewField extends React.Component {
         label: '',
         placeHolder: '',
         minChar: '',
-        maxChar: ''
+        maxChar: '',
+        value: '',
+        isDisabled: false,
+        isRequired: false
       };
       break;
     case 'numeric':
@@ -32,7 +36,12 @@ export default class NewField extends React.Component {
         label: '',
         placeHolder: '',
         minValue: '',
-        maxValue: ''
+        maxValue: '',
+        value: '',
+        isDisabled: false,
+        isRequired: false,
+        isPositive: false,
+        isInteger: false
       };
       break;
     case 'currency':
@@ -41,7 +50,10 @@ export default class NewField extends React.Component {
         placeHolder: '',
         minValue: '',
         maxValue: '',
-        currencyType: ''
+        currencyType: '',
+        value: '',
+        isDisabled: false,
+        isRequired: false
       };
       break;
     case 'checkBox':
@@ -60,6 +72,12 @@ export default class NewField extends React.Component {
     this.props.updateFields(fieldDetails);
   }
 
+  handleToggle(attribute) {
+    let fieldDetails = this.props.fieldDetails;
+    fieldDetails[attribute] = !fieldDetails[attribute];
+    this.props.updateFields(fieldDetails);
+  }
+
   updateState(attribute, value) {
     let fieldDetails = this.props.fieldDetails;
     fieldDetails[attribute] = value;
@@ -70,20 +88,24 @@ export default class NewField extends React.Component {
     return (
       <div className="row">
         <div className="col-lg-12 col-md-12">
-          <If condition={this.props.fieldDetails.type === 'text'}>
+          <If condition={this.props.fieldDetails.type === 'shortText'}>
             <TextField fieldDetails={this.props.fieldDetails}
+                       handleToggle={this.handleToggle}
                        handleChange={this.handleChange}/>
           </If>
-          <If condition={this.props.fieldDetails.type === 'paragraph'}>
+          <If condition={this.props.fieldDetails.type === 'scrollingText'}>
             <Paragraph fieldDetails={this.props.fieldDetails}
+                       handleToggle={this.handleToggle}
                        handleChange={this.handleChange}/>
           </If>
           <If condition={this.props.fieldDetails.type === 'numeric'}>
             <Numeric fieldDetails={this.props.fieldDetails}
+                     handleToggle={this.handleToggle}
                      handleChange={this.handleChange}/>
           </If>
           <If condition={this.props.fieldDetails.type === 'currency'}>
             <Currency fieldDetails={this.props.fieldDetails}
+                      handleToggle={this.handleToggle}
                       handleChange={this.handleChange}/>
           </If>
           <If condition={this.props.fieldDetails.type === 'checkBox'}>
@@ -102,10 +124,10 @@ export default class NewField extends React.Component {
                     onChange={this.onTypeChange}
                     value={this.props.fieldDetails.type}>
               <option value="">--Select Type--</option>
-              <option value="text">Short Answer</option>
-              <option value="paragraph">Paragraph</option>
               <option value="numeric">Numeric</option>
               <option value="currency">Currency</option>
+              <option value="shortText">Short Text</option>
+              <option value="scrollingText">Scrolling Text</option>
               <option value="checkBox">Check box</option>
             </select>
           </div>

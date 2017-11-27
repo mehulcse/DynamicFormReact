@@ -49,6 +49,30 @@ export default class Currency extends React.Component {
                  value={this.props.fieldDetails.maxValue}
                  onChange={this.props.handleChange.bind(null, 'maxValue')}/>
         </div>
+        <div className="form-group">
+          <label>Default Value</label>
+          <input type="number"
+                 className="form-control"
+                 placeholder="Default Value"
+                 value={this.props.fieldDetails.value}
+                 onChange={this.props.handleChange.bind(null, 'value')}/>
+        </div>
+        <div className="form-group">
+          <label className="mr-10" htmlFor="isDisabled">
+            <input type="checkbox"
+                   id="isDisabled"
+                   checked={this.props.fieldDetails.isDisabled}
+                   onChange={this.props.handleToggle.bind(null, 'isDisabled')}/> Disabled
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="mr-10" htmlFor="isRequired">
+            <input type="checkbox"
+                   id="isRequired"
+                   checked={this.props.fieldDetails.isRequired}
+                   onChange={this.props.handleToggle.bind(null, 'isRequired')}/> Required
+          </label>
+        </div>
       </div>
     );
   }
