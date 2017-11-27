@@ -1,5 +1,5 @@
 import React from "react";
-import If from "../Reusable/If/If.jsx";
+import If from "../../Reusable/If/If.jsx";
 import TextField from "./TextField.jsx";
 import Paragraph from "./Paragraph.jsx";
 import Numeric from "./Numeric.jsx";
