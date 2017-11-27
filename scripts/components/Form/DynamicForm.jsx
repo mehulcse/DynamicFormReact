@@ -1,6 +1,7 @@
 import React from "react";
 import NewField from "./CreateForm/NewField.jsx";
 import If from "../Reusable/If/If.jsx";
+import PreviewForm from "./PreviewForm/PreviewForm.jsx";
 
 export default class DynamicForm extends React.Component {
 
@@ -13,7 +14,7 @@ export default class DynamicForm extends React.Component {
       status: 'in_progress',
       defaultView: 'edit'
     };
-    this.renderNewField = this.renderNewField.bind(this);
+    this.renderNewFieldOptions = this.renderNewFieldOptions.bind(this);
     this.addNewField = this.addNewField.bind(this);
     this.removeField = this.removeField.bind(this);
   }
@@ -43,7 +44,7 @@ export default class DynamicForm extends React.Component {
     this.setState({ fields });
   }
 
-  renderNewField() {
+  renderNewFieldOptions() {
     if (this.state.fields && this.state.fields.length > 0) {
       return this.state.fields.map((element, index) => {
         return (
@@ -85,7 +86,7 @@ export default class DynamicForm extends React.Component {
               </div>
             </div>
             <div>
-              {this.renderNewField()}
+              {this.renderNewFieldOptions()}
             </div>
             <div className="my-10 text-center">
               <button className="btn btn-primary"
@@ -118,12 +119,15 @@ export default class DynamicForm extends React.Component {
         </If>
         <If condition={this.state.defaultView === 'preview'}>
           <section>
-            <div className="col ml-auto">
-              <i className="fa fa-times remove-option"
+            <div>
+              <i className="fa fa-times remove-option pull-right"
                  onClick={()=> {
                    this.setState({defaultView: 'edit'});
                  }}/>
             </div>
+            <PreviewForm title={this.state.title}
+                         description={this.state.description}
+                         fields={this.state.fields}/>
           </section>
         </If>
       </section>
