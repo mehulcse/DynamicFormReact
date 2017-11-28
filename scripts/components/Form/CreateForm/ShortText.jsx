@@ -1,6 +1,10 @@
 import React from "react";
 
-export default class Paragraph extends React.Component {
+export default class ShortText extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
@@ -39,7 +43,7 @@ export default class Paragraph extends React.Component {
         </div>
         <div className="form-group">
           <label>Default Value</label>
-          <input type="number"
+          <input type="text"
                  className="form-control"
                  placeholder="Default Value"
                  value={this.props.fieldDetails.value}

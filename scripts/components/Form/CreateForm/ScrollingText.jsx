@@ -1,10 +1,6 @@
 import React from "react";
 
-export default class TextField extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
+export default class ScrollingText extends React.Component {
 
   render() {
     return (
@@ -43,7 +39,7 @@ export default class TextField extends React.Component {
         </div>
         <div className="form-group">
           <label>Default Value</label>
-          <input type="number"
+          <input type="text"
                  className="form-control"
                  placeholder="Default Value"
                  value={this.props.fieldDetails.value}

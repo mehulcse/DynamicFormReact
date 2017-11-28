@@ -1,10 +1,11 @@
 import React from "react";
 import If from "../../Reusable/If/If.jsx";
-import TextField from "./TextField.jsx";
-import Paragraph from "./Paragraph.jsx";
+import ShortText from "./ShortText.jsx";
+import ScrollingText from "./ScrollingText.jsx";
 import Numeric from "./Numeric.jsx";
 import Currency from "./Currency.jsx";
 import CheckBox from "./CheckBox.jsx";
+import Alert from 'react-s-alert';
 
 export default class NewField extends React.Component {
 
@@ -19,8 +20,8 @@ export default class NewField extends React.Component {
   onTypeChange(e) {
     let fieldDetails;
     switch (e.target.value) {
-    case 'text':
-    case 'paragraph':
+    case 'shortText':
+    case 'scrollingText':
       fieldDetails = {
         label: '',
         placeHolder: '',
@@ -68,6 +69,24 @@ export default class NewField extends React.Component {
 
   handleChange(attribute, e) {
     let fieldDetails = this.props.fieldDetails;
+    // switch (attribute) {
+    // case 'minValue':
+    //   if(fieldDetails.maxValue < e.target.value) {
+    //     Alert.error('Minimum value should be less than Maximum value.');
+    //   }
+    //   break;
+    // case 'maxValue':
+    //   if(fieldDetails.minValue > e.target.value) {
+    //     Alert.error('Maximum value should be greater than Minimum value.');
+    //   }
+    //   break;
+    // case 'minChar':
+    //   break;
+    // case 'maxChar':
+    //   break;
+    // default:
+    //
+    // }
     fieldDetails[attribute] = e.target.value;
     this.props.updateFields(fieldDetails);
   }
@@ -89,12 +108,12 @@ export default class NewField extends React.Component {
       <div className="row">
         <div className="col-lg-12 col-md-12">
           <If condition={this.props.fieldDetails.type === 'shortText'}>
-            <TextField fieldDetails={this.props.fieldDetails}
+            <ShortText fieldDetails={this.props.fieldDetails}
                        handleToggle={this.handleToggle}
                        handleChange={this.handleChange}/>
           </If>
           <If condition={this.props.fieldDetails.type === 'scrollingText'}>
-            <Paragraph fieldDetails={this.props.fieldDetails}
+            <ScrollingText fieldDetails={this.props.fieldDetails}
                        handleToggle={this.handleToggle}
                        handleChange={this.handleChange}/>
           </If>
