@@ -1,11 +1,9 @@
 import React from "react";
 import If from "../../Reusable/If/If.jsx";
-import ShortText from "./ShortText.jsx";
-import ScrollingText from "./ScrollingText.jsx";
+import Text from "./Text.jsx";
 import Numeric from "./Numeric.jsx";
 import Currency from "./Currency.jsx";
 import CheckBox from "./CheckBox.jsx";
-import Alert from 'react-s-alert';
 
 export default class NewField extends React.Component {
 
@@ -107,13 +105,9 @@ export default class NewField extends React.Component {
     return (
       <div className="row">
         <div className="col-lg-12 col-md-12">
-          <If condition={this.props.fieldDetails.type === 'shortText'}>
-            <ShortText fieldDetails={this.props.fieldDetails}
-                       handleToggle={this.handleToggle}
-                       handleChange={this.handleChange}/>
-          </If>
-          <If condition={this.props.fieldDetails.type === 'scrollingText'}>
-            <ScrollingText fieldDetails={this.props.fieldDetails}
+          <If
+            condition={this.props.fieldDetails.type === 'shortText' || this.props.fieldDetails.type === 'scrollingText'}>
+            <Text fieldDetails={this.props.fieldDetails}
                        handleToggle={this.handleToggle}
                        handleChange={this.handleChange}/>
           </If>

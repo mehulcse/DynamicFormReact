@@ -46,33 +46,29 @@ export default class Numeric extends React.Component {
                  onChange={this.props.handleChange.bind(null, 'value')}/>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isDisabled">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isDisabled"
                    checked={this.props.fieldDetails.isDisabled}
                    onChange={this.props.handleToggle.bind(null, 'isDisabled')}/> Disabled
           </label>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isRequired">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isRequired"
                    checked={this.props.fieldDetails.isRequired}
                    onChange={this.props.handleToggle.bind(null, 'isRequired')}/> Required
           </label>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isPositive">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isPositive"
                    checked={this.props.fieldDetails.isPositive}
                    onChange={this.props.handleToggle.bind(null, 'isPositive')}/> Allow Only Positive Numbers
           </label>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isInteger">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isInteger"
                    checked={this.props.fieldDetails.isInteger}
                    onChange={this.props.handleToggle.bind(null, 'isInteger')}/> Allow Only Whole Numbers
           </label>

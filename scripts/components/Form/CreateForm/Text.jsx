@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class ShortText extends React.Component {
+export default class Text extends React.Component {
 
   constructor(props) {
     super(props);
@@ -50,17 +50,15 @@ export default class ShortText extends React.Component {
                  onChange={this.props.handleChange.bind(null, 'value')}/>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isDisabled">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isDisabled"
                    checked={this.props.fieldDetails.isDisabled}
                    onChange={this.props.handleToggle.bind(null, 'isDisabled')}/> Disabled
           </label>
         </div>
         <div className="form-group">
-          <label className="mr-10" htmlFor="isRequired">
+          <label className="mr-10">
             <input type="checkbox"
-                   id="isRequired"
                    checked={this.props.fieldDetails.isRequired}
                    onChange={this.props.handleToggle.bind(null, 'isRequired')}/> Required
           </label>
