@@ -96,6 +96,7 @@ export default class DynamicForm extends React.Component {
             </div>
             <div className="text-right">
               <button className="btn btn-default mr-10"
+                      disabled={!(this.state.title && this.state.description && this.state.fields.length > 0)}
                       onClick={(e)=> {
                         e.preventDefault();
                         if (e.stopPropagation) {
